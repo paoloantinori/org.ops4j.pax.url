@@ -35,6 +35,32 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Import-Package>
+                            org.slf4j;version="[1.6,2)",
+                            javax.net.ssl,
+                            javax.xml.parsers,
+                            org.osgi.framework;version="[1.5,2)",
+                            org.osgi.service.cm;resolution:=optional;version="[1.4,2)",
+                            javax.crypto,
+                            javax.crypto.spec,
+                            javax.naming,
+                            javax.naming.directory,
+                            javax.naming.ldap,
+                            javax.net,
+                            javax.security.auth.x500,
+                            org.ietf.jgss,
+                            org.osgi.service.url;version="[1.0,2)",
+                            org.slf4j.spi;version="[1.6,2)",
+                            org.w3c.dom,
+                            org.xml.sax,
+                            org.osgi.util.tracker;version="[1.4,2)"
+                        </Import-Package>
+                        <Bundle-SymbolicName>paolo</Bundle-SymbolicName>
+                    </instructions>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -266,7 +292,20 @@
                     <groupId>nekohtml</groupId>
                     <artifactId>xercesMinimal</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpcore</artifactId>
+                </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.4</version>
         </dependency>
 
         <!-- Test dependencies -->

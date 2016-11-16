@@ -152,7 +152,7 @@ public class AetherBasedResolver implements MavenResolver {
      */
     public AetherBasedResolver( final MavenConfiguration configuration, final Mirror mirror ) {
         NullArgumentException.validateNotNull( configuration, "Maven configuration");
-        m_client = HttpClients.createClient(configuration.getPropertyResolver());
+        m_client = HttpClients.createAlternativeClient(configuration.getPropertyResolver());
         m_config = configuration;
         m_settings = configuration.getSettings();
         m_repoSystem = newRepositorySystem();

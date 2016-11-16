@@ -43,6 +43,13 @@ public class HttpClients {
                 .build();
     }
 
+
+    public static CloseableHttpClient createAlternativeClient(PropertyResolver resolver) {
+        return org.apache.http.impl.client.HttpClients.custom().setConnectionManager(createConnManager( resolver )).useSystemProperties().disableConnectionState().setConnectionManagerShared(true).build();
+    }
+
+
+
     private static PoolingHttpClientConnectionManager createConnManager(PropertyResolver resolver)
     {
         boolean SSL_INSECURE = getBoolean( resolver, "maven.wagon.http.ssl.insecure",
